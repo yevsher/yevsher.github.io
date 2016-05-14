@@ -1,0 +1,77 @@
+<div ng-controller="PokedexController" class="row row-content" id="PokedexContentsArea">
+   <!--Pokedex header-->
+    <h1 id="PokedexHeading" class="h1">Pokedex</h1>
+    <!--Pokedex header end-->
+    
+    <!--Pokedex cards container-->
+    <div class="col-md-6 col-xs-6" id="pokemonCardsContainer">
+       <!--cards row-->
+        <div class="row row-content media-list">
+            <!--card template-->
+            <div class="media col-md-3 col-xs-12 pokemonCard" ng-repeat="pokemon in pokemons track by $index">
+                <div class="media-middle pokemonImageWrapper">
+                    <a href="#" ng-click="pokemonDetails(pokemon.id)">
+                        <img class="media-object img-responsive pokemonImage" ng-src={{pokemon.sprites.front_default}} alt="Pokemon"/>
+                    </a>
+                </div>
+                <div class="media-body pokemonCardBody">
+                    <h5 class="media-heading pokemonCardHeading">{{pokemon.name}}</h5>
+                    <span class="pokemonTypes" ng-class="pokemon.types[0].type.name">{{pokemon.types[0].type.name}}</span>
+                    <span class="pokemonTypes" ng-class="pokemon.types[1].type.name" ng-if="pokemon.types[1]">{{pokemon.types[1].type.name}}</span>
+                </div>
+            </div>
+            <!--card template end-->
+        </div>
+        <!--card row end-->
+        <!--load more button-->
+        <button class="btn btn-primary btn-lg btn-block" type="button" ng-click="getPokemons()" id="LoadMore">Load More</button>
+        <!--load more button end-->
+    </div>
+    <!--Pokedex cards container end-->
+    <!--Pokemon detail card container-->
+    <div class="col-md-6 col-xs-6" id="pokemonDetailsCardContainer">
+        <!--Sort button-->
+        <div id="sortButtonWrapper">
+            <div class="btn-group">
+                  <button class="btn btn-default btn-md btn-block dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sort by Type <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                        <li>
+                            <a href="#" ng-click="pokemonsSort('Asc')">Sort ascending</a>
+                        </li>
+                        <li>
+                            <a href="#" ng-click="pokemonsSort('Dsc')">Sort descending</a>
+                        </li>
+                  </ul>
+            </div>
+        </div>
+        <!--Sort button end-->
+        <!--Pokemon detail card-->
+        <div class="col-md-6 col-xs-6 media" id="pokemonDetailsCardWrapper" ng-show="showDetails">
+            <div class="media-middle" id="pokemonDetailsCardImageWrapper">
+                    <a href="#">
+                        <img class="media-object img-responsive" id="pokemonDetailsCardImage" ng-src={{detailsForPokemon.sprites.front_default}} alt="Pokemon"/>
+                    </a>
+            </div>
+            <div class="media-body" id="pokemonDetailsCardBodyWrapper">
+                <h4 class="media-heading" id="pokemonDetailsCardHeading">{{detailsForPokemon.name+" "+"#"+detailsForPokemon.id}}</h4>
+                <table id="pokemonDetailsCardTable" class="table table-bordered table-hover">
+                    <tbody>
+                        <tr><td>Type</td><td>{{detailsForPokemon.types[0].type.name+", "+detailsForPokemon.types[1].type.name}}</td></tr>
+                        <tr><td>Attack</td><td>{{detailsForPokemon.stats[4].base_stat}}</td></tr>
+                        <tr><td>Defense</td><td>{{detailsForPokemon.stats[3].base_stat}}</td></tr>
+                        <tr><td>HP</td><td>{{detailsForPokemon.stats[5].base_stat}}</td></tr>
+                        <tr><td>SP Attack</td><td>{{detailsForPokemon.stats[2].base_stat}}</td></tr>
+                        <tr><td>SP Defense</td><td>{{detailsForPokemon.stats[1].base_stat}}</td></tr>
+                        <tr><td>Speed</td><td>{{detailsForPokemon.stats[0].base_stat}}</td></tr>
+                        <tr><td>Weight</td><td>{{detailsForPokemon.weight}}</td></tr>
+                        <tr><td>Total moves</td><td>{{detailsForPokemon.moves.length}}</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Pokemon detail card end-->
+    </div>
+    <!--Pokemon detail card container end-->
+</div>
