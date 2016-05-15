@@ -17,7 +17,7 @@ angular.module('pokedexApp')
         var i = 0,
             lastPokemonId = 0;    
         
-
+        //creating a function for uploading a portion of pokemons from the server
         function getPokemonsAll(i, lastPokemonId) {
             var lastID = lastPokemonId || 0;
             pokemonService.getPokemons().get({id:lastID+i+1})

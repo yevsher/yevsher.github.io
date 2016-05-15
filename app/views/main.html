@@ -1,10 +1,14 @@
-<div ng-controller="PokedexController" class="row row-content" id="PokedexContentsArea">
+
+<div class="container" ng-controller="PokedexController" id="PokedexContentsArea">
    <!--Pokedex header-->
     <h1 id="PokedexHeading" class="h1">Pokedex</h1>
     <!--Pokedex header end-->
     
+    <!--Pokedex cards containers wrapper-->
+    <div class="row" id="PokedexCardsWrapper">
+    
     <!--Pokedex cards container-->
-    <div class="col-md-6 col-xs-6" id="pokemonCardsContainer">
+    <div class="col-sm-6 col-xs-6" id="pokemonCardsContainer">
        <!--cards row-->
         <div class="row row-content media-list">
             <!--card template-->
@@ -24,12 +28,12 @@
         </div>
         <!--card row end-->
         <!--load more button-->
-        <button class="btn btn-primary btn-lg btn-block" type="button" ng-click="getPokemons()" id="LoadMore">Load More</button>
+        <button class="btn btn-primary btn-md btn-block" type="button" ng-click="getPokemons()" id="LoadMore">Load More</button>
         <!--load more button end-->
     </div>
     <!--Pokedex cards container end-->
     <!--Pokemon detail card container-->
-    <div class="col-md-6 col-xs-6" id="pokemonDetailsCardContainer">
+    <div class="col-sm-6 col-xs-6" id="pokemonDetailsCardContainer">
         <!--Sort button-->
         <div id="sortButtonWrapper">
             <div class="btn-group">
@@ -74,4 +78,6 @@
         <!--Pokemon detail card end-->
     </div>
     <!--Pokemon detail card container end-->
+    </div>
+    <!--Pokedex cards containers wrapper end-->
 </div>
