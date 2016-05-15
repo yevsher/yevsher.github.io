@@ -35,8 +35,8 @@ body {
     display: -ms-flexbox;
     display: -moz-box;
     display:  flex;
-    flex-wrap: wrap;
-    -webkit-flex-wrap: wrap;
+    /*flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;*/
 }
 
 /* Pokedex heading */
